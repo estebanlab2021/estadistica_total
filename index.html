@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="copyright" content="© 2023 Esteban Arroyo">
+    <meta name="author" content="Esteban Arroyo" />
+    <meta name="robots" content="index"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <title>Estadística capítulo 1</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- Librería MathJax-->
+    <!--<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<style>
+   /* poner algún estilo a clases o id */
+   #menu {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: fixed;
+    /*position: sticky;*/
+    top: 180px;
+    bottom: auto;
+    padding-left: 15px;
+    padding-top: 20px;
+    width: 250px;
+    background: #eee;
+    /*overflow: auto;
+    z-index: -1;*/
+   }
+   .col-12 {
+    padding-left: 320px;
+   }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-file-bar-graph" style="font-size:40px"></i>   <!-- Aqui va bootstrap icons-->
+          </a>
+          <div class="col-sm text-start">
+            <p class="text-white-50 fw-bold">  &copy; Derechos Reservados - Esteban Arroyo 2024</p>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <!--<a class="nav-link" href="#">Inicio</a>-->
+              <a class="nav-link" href="#">estebanlab@gmail.com</a>
+              <!-- <a class="nav-link" href="#">Otros</a>-->
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container" >
+        <div class="row py-3">
+            <h1 class="text-center">CAPÍTULO 1</h1>
+            <hr>
+            
+            <div id="menu" class="col-2">
+                <p><b>Índice</b></p>
+                <p><a href="#estadistica">¿Qué es la Estadística</a></p>
+                <p><a href="#descriptiva">Estadística Descriptiva</a></p>                  
+                <p><a href="#representacion">Representación de los datos</a></p>
+                <p><a href="#tabular">Representación Tabular</a></p>
+                <p><a href="#grafica">Representación Gráfica</a></p>   
+                <p><a href="#cartesianos">Gráficos Cartesianos</a></p>
+                <p><a href="#areas">Gráficos Sectoriales o de Áreas</a></p>
+            </div>
+
+            <div class="col-12">
+                <h2 id="estadistica">¿QUÉ ES LA ESTADÍSTICA?</h2>
+                <p style="text-align:justify;">La estadística es una rama de la ciencia, que de manera muy general permite resumir un conjunto de datos, estando a su vez involucrado en los métodos para obtenerlos. En otras palabras,
+                    la estadística nos ayuda a recolectar, clasificar, agrupar, resumir, presentar y analizar información o datos, con la finalidad de establecer conclusiones sobre sus características o inferir 
+                    comportamientos o tendencias.
+                </p>
+                <center><img src="imagenes/estadistica.png" /></center>
+                <p style="text-align:justify;" class="pt-3">La palabra "estadística" procede del latín statisticum collegium ("consejo de Estado") y de su derivado italiano statista ("hombre de Estado" o "político"). 
+                    El término alemán Statistik, introducido por Gottfried Achenwall (1749), designaba originalmente el análisis de datos del Estado, es decir, "la ciencia del Estado". 
+                    No fue hasta el siglo XIX cuando el término estadística vino a designar la colección y clasificación de datos.</p>
+                <p style="text-align:justify;">El uso de la estadística (de forma intuitiva), se remonta a censos y recuentos de las primeras civilizaciones. Posteriormente la teoría de probabilidad que tiene como objetivo la medición de la incertidumbre,
+                    tiene sus orígenes en los juegos de azar. Los inicios de la probabilidad tienen su formalidad matemática en Fermat y Pascal en el período aproximado de 1650. Posteriormente, John Graunt en 1662, presenta análisis estadísticos
+                    aplicados a poblaciones humanas que más tarde se conocería como demografía (otro campo de aplicación de la estadística).
+                </p>
+                <p style="text-align:justify;">A partir del siglo XVIII, la estadística experimento un crecimiento aplicado a diversas áreas de conocimiento, como astronomía, psicología, biología, epidemiología, ciencias sociales, profundizando el uso de la probabilidad en modelos probabilisticos apropiados a cada caso. De este modo se llega a los inicios de la inferencia
+                    estadística. Posteriormente, numerosos investigadores, provenientes de las más diversas disciplinas, hicieron contribuciones a la estadística, durante la segunda mitad del siglo XIX, construyendo de a poco una disciplina que se iría perfilando cada vez más como una ciencia independiente.</p>
+                <p style="text-align:justify;">A finales del siglo XIX, dos investigadores dan un gran impulso a la estadistica: Francis Galton y Karl Pearson, con propuestas de una metodología empírica que
+                    sustituye a la experimentación controlada, en disciplinas donde la experimentación no es posible de aplicar.</p>
+                <p style="text-align:justify;">Posteriormente, en la década de 1920, se implementan los métodos de muestreo así como la representatividad en estadística. También a partir de esa década entra en escena RonaId Aylmer Fisher, un gran estadístico inglés que contribuyó a desarrollar importantes técnicas analíticas. Entre la decada de 1960 y 1970 con el desarrollo de los computadores, se logró un desarrollo e implementación acelerado de la estadística
+                    así como la aplicación analítica de grandes volúmenes de datos, lo que permitió que complejos cálculos, se pudieran realizar de forma fácil y rápida.  </p>
+                <p style="text-align:justify;">Hoy en día, con el uso de la internet y el desarrollo de aplicaciones en diferentes áreas públicas como privadas, se generan miles de millones de datos que requieren del uso correcto de la analítica estadística para tomar decisiones de negocios, corporativas, de inversión, salud, seguridad, políticas, económicas, administrativas, epidemiológicas, etc. Y los desarrollos computaciones actuales, facilitan la aplicación de modelos estadísticos óptimos y robustos que permiten tomar decisiones de forma más rápida y ágil.</p>
+                <p>En relación a todo lo comentado, podemos clasificar a la estadística en dos niveles:</p>
+                <ul>
+                    <li style="text-align:justify;"><b>Estadística Descriptiva:</b> es aquella que como su nombre lo indica, se enfoca en las descripciones sobre propiedades o características de los elementos o datos estudiados.
+                    </li>
+                    <li style="text-align:justify;"><b>Estadística Inferencial:</b> permite inferir o estimar propiedades, características o tendencias de una población a partir de de una o varias muestras. Es una parte de la Estadística que permite generar modelos probabilísticos a partir de un conjunto de observaciones.</li> 
+                </ul>
+                <h4 id="descriptiva">ESTADÍSTICA DESCRIPTIVA</h4>
+                <p style="text-align:justify;">Como ya se mencionó, la estadística descriptiva ofrece una serie de métodos para "describir" los datos permitiendo su ordenación, presentación y resumen. 
+                    Así mismo permite identificar estructuras internas de los datos por medio de visualizaciones gráficas o indicadores estadísticos que resumen la información.
+                    Entre ellos, tenemos:
+                </p>
+                <ul>
+                    <li><a href="#representacion">Representación de los Datos</a></li>
+                    <li><a href="frecuencia.html" target="_blank" rel="noopener noreferrer">Distribución de Frecuencias</a></li>
+                    <li><a href="central.html" target="_blank" rel="noopener noreferrer">Medidas de Tendencia Central</a></li> 
+                    <li><a href="posicion.html" target="_blank" rel="noopener noreferrer">Medidas de Posición</a></li>  
+                    <li><a href="dispersion.html" target="_blank" rel="noopener noreferrer">Medidas de Dispersión</a></li> 
+                    <li><a href="forma.html" target="_blank" rel="noopener noreferrer">Medidas de la Forma</a></li> 
+                </ul>
+                <p>En este primer capítulo comenzaremos explicando la representación de los datos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" >
+        <div class="row py-3">
+            <div class="col-12">
+                <h4 id="representacion">REPRESENTACIÓN DE LOS DATOS</h4>
+                <p style="text-align:justify;">En esta sección, abordaremos las formas de representación de los datos (resultados) para un informe, reporte, publicación, tesis o memoria. Existen dos formas básicas de representar a los datos:</p>
+                <ul>
+                    <li>Tabular</li>
+                    <li>Gráfica</li>
+                </ul>
+                <h5 id="tabular" class="fs-5">REPRESENTACIÓN TABULAR</h5>
+                <p>Se realiza a través de cuadro o tablas estadísticas. Es la ordenación de datos en forma de filas y columnas</p>
+                <p>El siguiente ejemplo de una tabla se ha tomado de: Marrodan, et al (2006). An Pediatr (Barc). 65(1):5-14</p>
+                <img src="imagenes/tabla.png" />
+                <p>Observamos que para efectos de una publicación, toda tabla debe estar debidamente numerada, en este caso: <b>"Tabla 1"</b>.</p>
+                <p style="text-align:justify;">Además, toda tabla debe tener un título que haga referencia al contenido del mismo, en este caso: <span class="fst-italic">"Prevalencia de obesidad y sobrepeso según estandares aplicados"</span></p>
+                <p style="text-align:justify;">De la misma forma, nos encontramos que cada columna de la tabla, debe estar identificada con un nombre corto, que haga referencia al tipo de dato que contiene. Por ejemplo, la primera columna está identificada como <span class="fst-italic">"Edad (años)"</span> , lo que quiere decir, que los datos son edades en años.</p>
+                <p style="text-align:justify;">Finalmente, observamos que los números contenidos debajo de cada columna, representa los datos, en este caso particular, son valores en porcentajes</p>
+                <p style="text-align:justify;">En caso de ser necesario, se pueden agregar notas al pie de la tabla para realizar alguna aclaratoria sobre los datos, la recolección, estadística usada o en este caso para informar sobre una nomenclatura contenida dentro de la tabla, por ejemplo: <span class="fst-italic">"OB"</span>, significa obesidad y <span class="fst-italic">"SB"</span>, significa sobrepeso</p>
+                <p style="text-align:justify;">Posteriormente, veremos en las próximas entregas, con ayuda de algunos softwares, como Excel, Python o R, la realización de tablas de resultados o generación de correctas tabulaciones.</p>
+
+                <h5 id="grafica" class="fs-5">REPRESENTACIÓN GRÁFICA</h5>
+                <p>Dentro de la representación gráfica podemos agruparlos en dos grandes tipos:</p>
+                <ol>
+                    <li style="text-align:justify;"><b>Cartesianos:</b> son representaciones gráficas estadísticas donde por lo general se construye un plano basado en dos ejes: un eje horizontal o eje de las abscisas, tambien llamado eje "X" y un eje vertical o eje de las ordenadas, llamado eje "Y". De esta forma, cada punto de ese plano posee coordenas X,Y. Podemos destacar algunos de los más usamos como:</li>
+                        <ol type="I">
+                            <li>Histograma de frecuencia simple</li>
+                            <li>Histograma de frecuencia acumulado</li>
+                            <li>Barras</li>
+                            <li>Gráfico de dispersión</li>
+                            <li>Gráfico de línea</li>
+                            <li>Boxplots</li>
+                        </ol>
+                    <li style="text-align:justify;"><b>Sectoriales o de Áreas:</b> son representaciones alternativas a los cartesianos en algunos casos y en otros se representa información estadística en mapas o regiones geográficas. Podemos destacar algunos de los más usamos como: </li>
+                        <ol>
+                            <li>Pastel o Torta (Pie)</li>
+                            <li>Gráficos de áreas (area chart)</li>  <!--revisar: https://www.jaspersoft.com/es/articles/what-is-an-area-chart-->
+                            <li>Pictogramas</li>
+                            <li>Cartogramas</li>
+                        </ol>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row py-3">
+            <div class="col-12">
+                <h5 id="cartesianos" class="fs-4">GRÁFICOS CARTESIANOS</h5>
+                <h5 class="fs-5">Histograma de frecuencia simple</h5>
+                <p style="text-align:justify;">Se usa para representar las frecuencias de una variable cuantitativa continua. En el eje "X" o de las abscisas se posicionan las clases de la variable continua (son grupos que sirven para reunir los casos que presentan valores comprendidos entre los límites dados) y en el eje "Y" o de las ordenadas, las frecuencias. Es importante aclarar que no existe separación entre las barras. Permite Identificar el centro, la extensión y la forma así como la variabilidad de los datos. Tambien sirve para inspeccionar visualmente si la distribución se ajusta a la normalidad de los datos, así como la identificación de valores atípicos, asimetría y multimodalidad en los datos. </p>
+                
+                <img src="imagenes/histograma_simple.png" width="750" height="500"/>
+                <br>
+                <br>
+                <br>
+                <h5 class="fs-5">Histograma de frecuencia acumulado</h5>
+                <p style="text-align:justify;">Es similar al de frecuencia simple, pero en este caso las barras representan la frecuencia absoluta acumulada (suma de las frecuencias) hasta el último valor de la clase. Sirve para comparar la distribución de datos real con una distribución teórica. Además, puede evaluar la variabilidad y la dispersión de los datos mediante la estimación de percentiles, cuartiles, medianas y rango. </p>
+                <img src="imagenes/histograma_acumulado.png" width="750" height="500"/>
+                </br>
+                </br>
+                </br>
+                <h5 class="fs-5">Gráfico de Barras</h5>
+                <p style="text-align:justify;">Un gráfico de barras, representa las frecuencias simples o relativas (porcentuales) de una variable cualitativa variable cualitativa categórica o discreta. En el eje "X" o de las abscisas se posicionan las distintas categorías o modalidades de la variable cualitativa, mientras que el eje "Y" o de las ordenadas, las frecuencias. Es importante destacar que entre las barras existe separación o espacio, para diferencias las frecuencias entre las categorías o modalidades.</p>
+                <img src="imagenes/barras.png" width="800" height="500"/>
+                <p><b>Fuente:</b>  Estadísticas y Estudios del Servicio de Impuestos Internos (SII)</p>
+
+                <br>
+                <br>
+                <br>
+                <p>A veces, por conveniencia estética o porque las etiquetas de las categorías son muy extensas, los gráficos de barras de presentan en forma horizontal.</p>
+
+                <img src="imagenes/barras2.png" width="800" height="500"/>
+                <p><b>Fuente:</b>  Departamento de Estadística e información de Salud (Deis)</p>
+                <br>
+                <br>
+                <br>
+
+                <p style="text-align:justify;">Otro tipo de gráfico de barras, se conoce como <b>gráfico de barras agrupado</b>. Donde se representa la información cruzada de dos variables categóricas. La variable principal se ubica en el eje "X" o de las abscisas, con las categorías respectivas, mientras que la segunda variable se representa en cada una de las modalidades o categorías de la primera variable. Es decir, las barras que representan la categorías de la segunda variable se ubican de forma adyacente para cada categoría de la primera variable.</p>
+                <img src="imagenes/barras3.png" width="800" height="500"/>
+                <p><b>Fuente:</b>  Departamento de Estadística e información de Salud (Deis)</p>
+                </br>
+                </br>
+                </br>
+                <p style="text-align:justify;">Finalmente, el gráfico de barras agrupado, se puede representar de forma "apilada" (<b>gráfico de barras apilado</b>), es decir, en lugar de presentar las categorías de la segunda variable de forma adyacente, se visualiza una encima de la otra. </p>
+                <img src="imagenes/barras4.png" width="800" height="500"/>
+                <p><b>Fuente:</b> Encuesta Nacional Urbana de Seguridad Ciudadana (ENUSC) - 2023 </p>
+                <br>
+                <br>
+                <br>
+
+                <h5 class="fs-5">Gráfico de dispersión</h5>
+                <p style="text-align:justify;">El gráfico de dispersión o tambien llamado diagrama de dispersión o Scatter plot en inglés, representa la relación entre dos variables contínuas en un plano cartesiano. Cada variable se sitúa en un eje y cada punto del plano ocupa un espacio definido por sus coordenas cartesianas "X", "Y". Es decir, cada observación posee una dirección "X - Y", en un plano cartesiano definido por las variables en cada eje. En general, se utilizan para mostrar relaciones de tipo lineal y no lineal. Usualmente, existe una relación de independencia-dependencia entre las dos variables consideradas y por lo general, la variable independiente se representa a lo largo del eje horizontal (eje de las abscisas). Por su parte, la variable dependiente usualmente se representa a lo largo del eje vertical (eje de las ordenadas). En caso de no existir una relación de dependencia, cualquier variable se puede representar en cada eje y el diagrama de dispersión mostrará el grado de correlación (no causalidad) entre las variables.</p>
+                <img src="imagenes/dispersion.png" width="800" height="500"/>
+                <br>
+                <br>
+                <br>
+
+                <h5 class="fs-5">Gráfico de Línea</h5>
+                <p style="text-align:justify;">Un gráfico de línea es un tipo de gráfico de dispersión que genera una representación visual de la relación o tendencia que existe de una variable en función de otra. Usualmente, una de las variables es contínua y la otra representa el tiempo o un intervalo de tiempo. En general se usa para representar los cambios de una variable contínua a los largo de un eje temporal, representada como una línea. Con frecuencia, En el eje horizontal se ubica la variable temporal y en el eje vertical se visualiza la variable contínua cuya variación en el tiempo se quiere representar. </p>
+                <img src="imagenes/linea.png" width="800" height="500"/>
+                <p><b>Fuente:</b> https://www.ine.gob.cl/ </p>
+                <br>
+                <br>
+                <br>
+
+                <h5 class="fs-5">Gráfico de Boxplots o cajas y bigotes</h5>
+                <p style="text-align:justify;">El gráfico o diagrama de boxplot o tambien conocido como cajas y bigotes (box and whisker plot en inglés), muestra un resumen de una o varias variables contínuas, en unas pocas medidas descriptivas específicas (mediana, los cuartiles y el rango intercuartílico). Permite analizar de forma gráfica la dispersión de los conjuntos de datos. También se usa para identificar los valores atípicos. Son extremadamente útiles para obterner una visión general de la simetría de la distribución de los datos.</p>
+                <img src="imagenes/boxplot.png" width="800" height="500"/>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row py-3">
+            <div class="col-12">
+                <h5 id="areas" class="fs-4">GRÁFICOS SECTORIALES O DE ÁREAS</h5>
+                <h5 class="fs-5">Gráfico de Pastel o Torta (Pie)</h5>
+                <p style="text-align:justify;">Tambien llamdos gráficos de sectores, es una representación circular de las frecuencias absolutas o relativas de una variable cualitativa categórica que permite, de una manera sencilla y rápida, su comparación. El círculo representa la totalidad que se quiere observar de la variable y cada porción, llamadas sectores, representan la frecuencia (absoluta o relativa), proporcionalmente a la totalidad del círculo (360°). Por ejemplo, si una variable posee dos categorías "A" y "B" y cada una tiene una frecuencia de 35 y 80, respectivamente y queremos obtener la proporción de la frecuencia de la categoría "A" en el círculo, usamos la siguiente formula:</p>
+                \[x^0 = {360^0 * frecuencia \ de \ A \over Total \ de \ la \ variable}\]
+                <p>Sustituyendo:</p>
+                \[x^0 = {360^0 * 35 \over 115} = 109.6^0\]
+                <p style="text-align:justify;">Esto quiere decir que, si ubicamos nuestro punto de partida 0 grados en el norte y recorremos en el sentido de las agujas del reloj, finalizamos exactamente en 109.6 grados y ese sector representaría a la categoría "A". De forma similizar se haría con la otra categoría, pero como en este caso solo hay dos, el otro sector queda por defecto</p>
+                <img src="imagenes/pie.png" width="700" height="300"/>
+                <br>
+                <br>
+                <br>
+
+                <h5 class="fs-5">Gráficos de Áreas (area chart)</h5>
+                <p style="text-align:justify;">Un gráfico de áreas es una representación visual de datos que utiliza líneas y áreas rellenas para transmitir información. Este tipo de gráfico es particularmente eficaz para mostrar tendencias y variaciones de datos durante un período específico o en diferentes categorías. A diferencia de los gráficos de líneas tradicionales que solo representan datos con líneas, un gráfico de áreas introduce una capa adicional al llenar el espacio entre las líneas y el eje x con color. Esto crea un contexto de "área" visual para comprender la magnitud y distribución de los puntos de datos. El espacio vertical entre la línea y el eje x representa los valores de los puntos de datos en un momento o categoría determinado. Al analizar el ancho y el alto de estas áreas sombreadas, se puede comprender tanto los valores de datos individuales como su efecto acumulativo. Como resultado, mejora la comprensión de tendencias, contrastes y relaciones dentro del conjunto de datos.</p>
+                <img src="imagenes/area.png" width="800" height="500"/>
+                <p><b>Fuente:</b>  Departamento de Estadística e información de Salud (Deis)</p>
+                <br>
+                <br>
+                <br>
+
+                <h5 class="fs-5">Pictogramas</h5>
+                <p style="text-align:justify;">Un pictograma estadístico, es una tipo de gráfico que incluye figuras, símbolos o dibujos que ayuda a representar valores, cantidades proporcionales a su frecuencia. Se utilizan para representar variables cualitativas categóricas y son una alternativa a los gráficos de barras que suelen usarse para comparar magnitudes o ver tendencias en el tiempo.</p>
+                <img src="imagenes/pictograma.png" width="800" height="300"/>
+
+                <br>
+                <br>
+                <br>
+                <h5 class="fs-5">Cartogramas</h5>
+                <p style="text-align:justify;">Es un mapa en el que se presentan datos estadísticos por regiones, ya sea incluyendo un valor, número de porcentaje o coloreando las distintas zonas en función del dato que representan</p>
+                <img src="imagenes/cartograma2.png" width="800" height="500"/>
+                <br>
+                <br>
+                <br>
+                <h5 class="fs-4">A MODO DE CONCLUSIÓN</h5>
+                <p style="text-align:justify;">La representación gráfica es de vital importancia en cualquier análisis estadístico, reporte o informe de datos, 
+                    ya que permiten una rápida visualización y compresión de la información y permiten tomar decisiones basadas en los datos representados en forma visual. 
+                    Es por ello que muchas empresas buscan generar los llamados "dashboard" que permiten visualizar sus "KPIs" o métricas importantes que son a vez claves para la consecución de sus objetivos o metas corporativas.</p>
+                <p style="text-align:justify;">Por otro lado, es importante aclarar que los gráficos que hemos presentado aquí, no son todos, hay muchos tipos y subtipos gráficos que se pueden generar de acuerdo a los datos o al estilo gráfico que se quiere realizar. En próximas entregas, con ayuda de algunos softwares, como Excel, Python o R, vamos a realizar representaciones de cada caso.</p>
+            </div>
+        </div>
+    </div>
+
+<!-- revisar: https://isdfundacion.org/2023/08/22/estadistica-descriptiva-definicion-conceptos-y-ejemplos-->
+    <!--<div > 
+        <p>
+            \[\bar{x} = {\sum_{i=1}^n x_{i} \over n}\]
+        </p>		
+     
+    </div>
+
+    <div > 
+        <p>
+            \[ \sigma = \sqrt{(\sum_{i=1}^n x_{i}- \bar{x} )^2 \over n} \]
+        </p>		
+     
+    </div>
+
+    <div > 
+        <p>
+            \[ cv = {\bar{x} \over \sigma } * 100\]
+        </p>		
+     
+    </div>-->
+
+    
+
+   
+    
+    
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script>
+    //    let sidebar = document.getElementById("menu");
+    //
+    //    window.onscroll = () =>{
+    //        let scrollTop = window.scrollY; // current scroll position
+    //        let viewportHeight = window.innerHeight; //viewport height
+    //        let contentHeight = sidebar.getBoundingClientRect().height; // current content height
+    //        let sidebarTop = sidebar.getBoundingClientRect().top + window.pageYOffset; //distance from top to sidebar
+    //
+    //        console.log("viewportHeight:", viewportHeight)
+    //        console.log("contentHeight:", contentHeight)
+    //        console.log("sidebarTop:", sidebarTop)
+    //
+    //        if(scrollTop >= contentHeight - viewportHeight + sidebarTop) {
+    //        sidebar.style.transform = `translateY(-${contentHeight - viewportHeight + sidebarTop}px)`;
+    //        //sidebar.style.position = "fixed";
+    //        }
+    //        else {
+    //            sidebar.style.transform = "";
+    //            sidebar.style.position = "";
+    //        }
+    //    }
+    //
+    //    https://anhkarppinen.com/fixed-sidebar-scrolling-sticky-position/#The_fixed_sidebar
+    //    https://css-tricks.com/scrollfollow-sidebar/   //revisar
+    </script>
+</body>
+</html>
