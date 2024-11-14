@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="copyright" content="© 2023 Esteban Arroyo">
+    <meta name="author" content="Esteban Arroyo" />
+    <meta name="robots" content="index"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <title>Distribuciones de frecuencias | Capítulo 2</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- Librería MathJax-->
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script>
+      //desactiva el botón derecho del mouse
+      document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+      }, false);
+    </script>
+</head>
+<style>
+    #menu {
+     position: -webkit-sticky;
+     position: -moz-sticky;
+     position: -ms-sticky;
+     position: -o-sticky;
+     position: fixed;
+     top: 180px;
+     bottom: auto;
+     padding-left: 15px;
+     padding-top: 20px;
+     width: 250px;
+     background: #eee;
+    }
+    .col-12 {
+     padding-left: 320px;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-file-bar-graph" style="font-size:40px"></i>   <!-- Aqui va bootstrap icons-->
+          </a>
+          <div class="col-sm text-start">
+            <p class="text-white-50 fw-bold">  &copy; Derechos Reservados - Esteban Arroyo 2024</p>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <!--<a class="nav-link" href="#">Inicio</a>-->
+              <a class="nav-link" href="#">estebanlab@gmail.com</a>
+              <!-- <a class="nav-link" href="#">Otros</a>-->
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container" >
+        <div class="row py-3">
+            <h1 class="text-center">CAPÍTULO 2</h1>
+            <hr>
+
+            <div id="menu" class="col-2">
+                <p><b>Índice</b></p>
+                <p><a href="#definicion">Distribuciones de Frecuencia</a></p>
+                <p><a href="#simple">No Agrupadas</a></p>                  
+                <p><a href="#agrupadas">Agrupadas</a></p>
+                <p><a href="#ejemplo">Ejemplo</a></p>
+                <p><a href="#histograma">Histograma simple</a></p>   
+                <p><a href="#acumulado">Histograma acumulado</a></p>
+                <p><a href="#conclu">Conclusión</a></p>
+            </div>
+
+
+            <div class="col-12">
+                <h2 id="definicion">DISTRIBUCIONES DE FRECUENCIAS</h2>
+
+                <p style="text-align:justify;">Las distribuciones de frecuencias es un tipo de representación tabular en que se indican el número de veces que se repite un valor, dato o término dentro de una serie en estudio que en la mayoría de las veces se encuentran agrupadas en categorías (clases), que son mutuamente excluyentes, es decir, que no se solapan entre ellas. Es una forma de agrupación de valores de una variable contínua. La finalidad de las distribuciones de frecuencias es facilitar la obtención de la información que contienen los datos. Por lo general, las categorías o modalidades agrupadas se disponen en las filas y en las columnas se indica la frecuencia u ocurrencia de forma absoluta, relativa o porcentual, como se puede apreciar en el siguiente ejemplo. </p>
+
+                <table class="table table-hover">
+                  <thead>
+                    <tr class="table-info">
+                      <th scope="col">Clases</th>
+                      <th scope="col">fi</th>
+                      <th scope="col">Fi</th>
+                      <th scope="col">hi%</th>
+                      <th scope="col">Hi%</th>
+                      <th scope="col">Xi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">[9 - 10]</th>
+                      <td>5</td>
+                      <td>5</td>
+                      <td>12.5</td>
+                      <td>12.5</td>
+                      <td>9.5</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">[11 - 12]</th>
+                      <td>4</td>
+                      <td>9</td>
+                      <td>10</td>
+                      <td>22.5</td>
+                      <td>11.5</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">[13 - 14]</th>
+                      <td>8</td>
+                      <td>17</td>
+                      <td>20</td>
+                      <td>42.5</td>
+                      <td>13.5</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">[15 - 16]</th>
+                      <td>11</td>
+                      <td>28</td>
+                      <td>27.5</td>
+                      <td>70</td>
+                      <td>15.5</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">[17 - 18]</th>
+                      <td>7</td>
+                      <td>35</td>
+                      <td>17.5</td>
+                      <td>87.5</td>
+                      <td>17.5</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">[19 - 20]</th>
+                      <td>5</td>
+                      <td>40</td>
+                      <td>12.5</td>
+                      <td>100</td>
+                      <td>19.5</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <th scope="row">Total</th>
+                    <td>40</td>
+                    <td></td>
+                    <td>100</td>
+                    <td></td>
+                    <td></td>
+                  </tfoot>
+                </table>
+
+                <p style="text-align:justify;">De acuerdo a la necesidad de análisis o la cantidad de datos involucrados, las distribuciones de frecuencia pueden ser:</p>
+                <ul>
+                    <li>No Agrupadas</li>
+                    <li>Agrupadas</li>
+                </ul>
+
+                <h5 id="simple" class="fs-5">NO AGRUPADAS</h5>
+                <h5 class="fs-5">¿En qué consiste?</h5>
+
+                <p style="text-align:justify;">Supongamos que tenemos los resultados de la siguiente variable aleatoria "X":</p>
+                <p>X: 2, 1, 5, 3, 3, 2, 3, 1, 4, 2, 4, 2, 3, 2, 3, 4, 3, 3, 1, 2</p>
+                <p>Seguidamente, ordenamos los datos de menor a mayor (puede ser a la inversa también)</p>
+                <p>X: 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 5</p>
+                <p>Posteriormente contamos las frecuencias de cada dato y hacemos una representación tabular de los resultados:</p>
+
+                <center>
+                <table class="table" style="width: 150px;">
+                  <col style="width: 20px;">
+                  <col style="width: 20px;">
+                  <thead>
+                    <tr>
+                      <th scope="col">X</th>
+                      <th scope="col">frecuencia</th>
+                    </tr>
+                    <tr>
+                      <td >1</td>
+                      <td style="text-align:center;">3</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td style="text-align:center;">6</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td style="text-align:center;">7</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td style="text-align:center;">3</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td style="text-align:center;">1</td>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <td>Total</td>
+                    <td style="text-align:center;">20</td>
+                  </tfoot>
+                </table>
+              </center>
+
+              <p style="text-align:justify;">Donde la columna "X", representa cada uno de los valores presentes en la variable "X" y la columna frecuencia, es el conteo o número de veces que se repite un valor de la variable "X".</p>
+              
+              <p style="text-align:justify;">En resumen, una distribución de frecuencias no agrupadas, también llamada Distribución simple, es una representación tabular donde se expresa el conteo o número de veces que se repite un valor de la variable numérica analizada. Sin embargo, es poco últil cuando hay gran cantidad de datos, porque quedaría una tabla muy grande y sería difícil y extenuante la revisión y análisis de las frecuencias. </p>
+
+              <h5 id="agrupadas" class="fs-5">DISTRIBUCIONES AGRUPADAS</h5>
+
+              <p style="text-align:justify;">Como su nombre lo indica, permite la agrupación de los datos en grupos o clases (llamados así de ahora en adelente) y expresan las frecuencias de cada uno. Una de las grandes ventajas es que facilita la interpretación de grandes volúmenes de datos. Además, una característica importante de las distribuciones de frecuencia agrupadas es la presencia de las clases que son mutuamente excluyentes, tal como se comentó al princípio, es decir, que los límites que definen a estas clases, no se solapan entre ellas. Por ejemplo, si estamos trabajando con una variable numérica como la edad, y definimos dos clases, donde la clase 1 tiene un rango de 9 a 11 años y la clase 2 posee un rango entre 12 y 14 años, observamos que los límites superiores e inferiores de cada clase no se traslapan.</p>
+
+              <p style="text-align:justify;">Las distribuciones de frecuencia agrupadas poseen varios componentes que sirven para crear la representación tabular como son:</p>
+              <ul>
+                <li><b>Intervalo Total (IT)</b>: O rango total de la serie de datos. Es la diferencia entre el valor máximo y mínimo de la serie.   \[I_{t} = Valor_{max} - Valor_{min}\]  </li>
+                <li><b>Clase o Grupo</b>: son los subgrupos que sirven para reunir los casos que presentan valores comprendidos entre los límites dados.</li>
+                <li><b>Intervalo de Clase (Ic)</b>: es un valor que permite definir los intervalos o rangos de una clase. Es el Intervalo Total dividido entre el número de clases (k).   \[I_{c}= {I_{t} \over k} \]</li>
+                <li><b>Número de Clases (k)</b>: hay al menos dos formas de determinar el número de clases de una serie de datos: el método de la raiz y el método de Sturges. Dependiendo de los datos, conviene utilizar un método u otro. Sin embargo, estas son recomendaciones, ya que al final, el investigador puede decidir un número de clases que le sea más conviente. De igual forma explicaremos ambas formas.
+                  <ol>
+                    <li>Método de la raiz: consiste en calcular la raíz cuadrada del total o tamaño de los datos (n) si es menor a 200: \[k = \sqrt{n} \] Si el tamaño de los datos es igual o mayor a 200, calculamos la raiz cúbica.  \[k = \sqrt[3]{n} \]</li>
+                    <li>Método de Sturges: propuesto por Herbert Sturges en 1926, establece que el tamaño óptimo para una distribución agrupada y para posterior elaboración de un histograma, se utiliza la siguiente fórmula: \[k = 1 + log_{2}(n) \] Que puede escribirse a partir de logaritmos base 10 de la siguiente forma: \[k = 1+ {log(n) \over log(2)} \]  O de manera equivalente, y quizás la más conocida: \[1 + 3.322*log(n)\] Este método sugiere un criterio de "redondeo" del número clases de la siguiente forma: si el resultado es un número par, se redondea a la alta y si el entero es "impar" se redondea a la baja, resultando siempre un número impar de clases, lo que permite visualizar la acumulación cerca de la media o centro para constatar de este modo la distribución normal (esto lo veremos en los próximos capítulos).</li>
+                  </ol>
+                </li>
+
+                <li><b>Límites de la Clase</b>: Son el rango de valores que limitan a cada clase (Límite Inferior (LI) y Límite Superior (LS))</li>
+                <li><b>Frecuencias Absolutas de la Clase (fi)</b>: es el número de veces que aparece uno o más valores comprendidos dentro de los límites de la clase definida.</li>
+                <li><b>Frecuencias Absolutas Acumuladas (Fi)</b>: es la suma de las frecuencias absolutas de todos los valores inferiores o iguales al valor del límite superior de la clase considerada.</li>
+                <li><b>Frecuencias Relativas de la Clase (hi)</b>: es la frecuencia absoluta de la clase actual dividida entre el total de los datos. \[h_{i} = {f_{i} \over \sum_{i=1}^n f_{i} }\]</li>
+                <li><b>Frecuencias Relativas Acumuladas (Hi)</b>: es la frecuencia acumulada de la clase dividida entre el total de los datos. \[H_{i} = {F_{i} \over \sum_{i=1}^n f_{i} }\]</li>
+                <li><b>Frecuencias Relativas Porcentuales de la Clase (hi%)</b>: es la frecuencia relativa de la clase multiplicada por 100. \[h_{i} * 100\]</li>
+                <li><b>Frecuencias Relativas Porcentuales Acumuladas (Hi%)</b>: es la frecuencia relativa acumulada de la clase multiplicada por 100. \[H_{i} * 100\]</li>
+                <li><b>Punto Medio o Marca de la Clase (Xi)</b>: es la suma de los límites de la clase divididos entre 2. \[x_{i} = {L_{i}+L_{s} \over 2}\]</li>
+              </ul>
+
+              <h5 id="ejemplo" class="fs-5">EJEMPLO DE UNA DISTRIBUCIÓN DE FRECUENCIAS AGRUPADAS</h5>
+
+              <p>Veamos un ejemplo, paso a paso:</p>
+
+              <p style="text-align:justify;">Los siguientes 40 datos corresponden a las edades de un grupo de niños y adolescentes. Nos piden cosntruir una distribución de feecuencias junto con un histograma.</p>
+              \[12,  18,  14,  13, 	13, 	16, 	17, 	9, 	19,   15 \]
+              \[9,	 19,	15,	 10, 	14,	  16,	  16,	 13,	17,	  16 \]
+              \[10,  16,	15,	 14,	11, 	9,	  18,	 19,	15,	  17 \]
+              \[12,  14,	13,  19, 	18, 	20,	  13,	 11,	18, 	16 \]
+
+              <p>1ro se ordenan los datos de menor a mayor (puede ser a la inversa también)</p>
+
+              \[ 9,	 9,	 9,	10,	10,	11,	11,	12,	12,	13 \]
+              \[13,	13,	13,	14,	14,	14,	14,	15,	15,	15 \]
+              \[15,	16,	16,	16,	16,	13,	16,	16,	17,	17 \]
+              \[17,	18,	18,	18,	18,	19,	19,	19,	19,	20 \]
+
+              <p>2do calculamos el Intervalo Total (IT), a partir de identificar el valor máximo (20) y mínimo (9):  \[I_{t} = 20 - 9 = 11\]</p>
+
+              <p style="text-align:justify;">3ro calculamos el Número de Clases (k) por el método de Sturges:  \[1 + 3.322*log(40) = 6.322\] Según la recomendación de Sturges, deberíamos redondear a la alta cuando el resultado es un número par, pero en este caso, el valor de "7" clases no nos acomoda pues se genera una clase que se sale del rango de datos, por tanto lo dejaremos en "6" clases.</p>
+
+              <p>4to calculamos el Intervalo de Clase (Ic): \[I_{c}= {11 \over 6} = 1.83 \approx 2 \]</p>
+
+              <p style="text-align:justify;">5to empezamos a construir las clases. Comenzamos con la primera clase, donde el límite inferior será el valor mínimo de la serie de datos, que en este caso es 9.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9 -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">Luego pasamos al límite inferior de la segunda clase, que se define como la suma del límite inferior de la clase anterior sumado al intervalo de la clase que es 2. Por lo tanto, el resultado es 11.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9 -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">De la misma forma, seguimos definiendo los límites inferiores del resto de las clases, hasta parar en la clase 6, pues el es valor que definimos en el 3er paso cuando calculamos el número de clases en 6.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9 -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  ]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">A continuación, definimos los límites superiores de todas las clases. El límite superior será el límite inferior de la clase siguiente menos 1 (restamos 1, porque nuestros datos son todos numéricos enteros, es decir, sin decimales, si hubiera decimales, entonces restaríamos 0.1 al límite inferior de la clase siguiente.). En el caso de 1ra clase, el límite superior sería 11-1=10. En la segunda clase 13-1=12 y así sucesivamente. Tambien se puede simplemente sumar el intervalo de clase al límite superior de la clase anterior para la clase actual. Por ejemplo, 10+2, 12+2, etc.</p>
+
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9  -  10]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  12]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  14]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  16]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  18]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  20]</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">Un vez ya definidas las clases, se procede a determinar las frecuencias absolutas simples (fi), en el cual se cuanta la cantidad de datos que existe entre los valores límites de la clase, incluidos ambos límites. Por ejemplo, para la 1ra clase, hay 5 datos entre 9 y 10 años incluidos el 9 y 10. Para la segunda clase, hay 4 datos entre 11 y 12 años y así sucesivamente para el resto de las clases. Importante, la suma total de fi debe ser igual al total de datos de la serie, que en este caso son 40.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9  -  10]</th>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  12]</th>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  14]</th>
+                    <td>8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  16]</th>
+                    <td>11</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  18]</th>
+                    <td>7</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  20]</th>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td>40</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">La frecuencia absoluta acumulada (Fi) de la primera clase, es igual a la frecuencia absoluta simple de la clase, porque al ser la primera, no tenemos nada acumulado. Por otra parte, la frecuencia absoluta acumulada de la 2da clase será  la frecuencia absoluta acumulada de la clase anterior sumado a la frecuencia absoluta simple de la 2da clase: 5+4=9. La frecuencia absoluta acumulada de la 3ra clase será la frecuencia absoluta acumulada de la clase anterior sumado a la frecuencia absoluta simple de la 3ra clase: 9+8=17, y así sucesivamente para el resto de las clases.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9  -  10]</th>
+                    <td>5</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  12]</th>
+                    <td>4</td>
+                    <td>9</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  14]</th>
+                    <td>8</td>
+                    <td>17</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  16]</th>
+                    <td>11</td>
+                    <td>28</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  18]</th>
+                    <td>7</td>
+                    <td>35</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  20]</th>
+                    <td>5</td>
+                    <td>40</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td>40</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">Para las frecuencias relativas de la clase (hi), se obtiene como la frecuencia absoluta de la clase actual dividida entre el total de los datos. Importante, la suma de las frecuencias relativas hi, debe ser igual 1.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9  -  10]</th>
+                    <td>5</td>
+                    <td>5</td>
+                  <td>5/40 = 0.125</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  12]</th>
+                    <td>4</td>
+                    <td>9</td>
+                    <td>4/40 = 0.1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  14]</th>
+                    <td>8</td>
+                    <td>17</td>
+                    <td>8/40 = 0.2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  16]</th>
+                    <td>11</td>
+                    <td>28</td>
+                    <td>11/40 = 0.275</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  18]</th>
+                    <td>7</td>
+                    <td>35</td>
+                    <td>7/40 = 0.175</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  20]</th>
+                    <td>5</td>
+                    <td>40</td>
+                    <td>5/40 = 0.125</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td>40</td>
+                  <td></td>
+                  <td>1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">Por su parte, las frecuencias relativas acumuladas (Hi), se obtienen como la frecuencia acumulada de la clase dividida entre el total de los datos</p>
+
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9  -  10]</th>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5/40 = 0.125</td>
+                    <td>5/40 = 0.125</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  12]</th>
+                    <td>4</td>
+                    <td>9</td>
+                    <td>4/40 = 0.1</td>
+                    <td>9/40 = 0.225</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  14]</th>
+                    <td>8</td>
+                    <td>17</td>
+                    <td>8/40 = 0.2</td>
+                    <td>17/40 = 0.425</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  16]</th>
+                    <td>11</td>
+                    <td>28</td>
+                    <td>11/40 = 0.275</td>
+                    <td>28/40 = 0.7</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  18]</th>
+                    <td>7</td>
+                    <td>35</td>
+                    <td>7/40 = 0.175</td>
+                    <td>35/40 = 0.875</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  20]</th>
+                    <td>5</td>
+                    <td>40</td>
+                    <td>5/40 = 0.125</td>
+                    <td>40/40 = 1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td>40</td>
+                  <td></td>
+                  <td>1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">Las frecuencias relativas porcentuales simples (hi%) y acumuladas (Hi%), se obtienen como las frecuencias relativas respectivas multiplicadas por 100. Importante, al igual que con las frecuencias relativas hi, la suma de las frecuencias relativas porcentuales simples (hi%) debe ser igual a 100</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9  -  10]</th>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5/40 = 0.125</td>
+                    <td>5/40 = 0.125</td>
+                    <td>0.125*100 = 12.5</td>
+                    <td>0.125*100 = 12.5</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  12]</th>
+                    <td>4</td>
+                    <td>9</td>
+                    <td>4/40 = 0.1</td>
+                    <td>9/40 = 0.225</td>
+                    <td>0.1*100 = 10</td>
+                    <td>0.225*100 = 22.5</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  14]</th>
+                    <td>8</td>
+                    <td>17</td>
+                    <td>8/40 = 0.2</td>
+                    <td>17/40 = 0.425</td>
+                    <td>0.2*100 = 20</td>
+                    <td>0.425*100 = 42.5</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  16]</th>
+                    <td>11</td>
+                    <td>28</td>
+                    <td>11/40 = 0.275</td>
+                    <td>28/40 = 0.7</td>
+                    <td>0.275*100 = 27.5</td>
+                    <td>0.7*100 = 70</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  18]</th>
+                    <td>7</td>
+                    <td>35</td>
+                    <td>7/40 = 0.175</td>
+                    <td>35/40 = 0.875</td>
+                    <td>0.175*100 = 17.5</td>
+                    <td>0.87.5*100 = 87.5</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  20]</th>
+                    <td>5</td>
+                    <td>40</td>
+                    <td>5/40 = 0.125</td>
+                    <td>40/40 = 1</td>
+                    <td>0.125*100 = 12.5</td>
+                    <td>1*100 = 100</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td>40</td>
+                  <td></td>
+                  <td>1</td>
+                  <td></td>
+                  <td>100</td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">Finalmente, el punto medio o marca de la clase (Xi), se obtiene como la suma de los límites de la clase divididos entre 2.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi</th>
+                    <th scope="col">Hi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9  -  10]</th>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5/40 = 0.125</td>
+                    <td>5/40 = 0.125</td>
+                    <td>0.125*100 = 12.5</td>
+                    <td>0.125*100 = 12.5</td>
+                    <td>(9+10)/2 = 9.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11  -  12]</th>
+                    <td>4</td>
+                    <td>9</td>
+                    <td>4/40 = 0.1</td>
+                    <td>9/40 = 0.225</td>
+                    <td>0.1*100 = 10</td>
+                    <td>0.225*100 = 22.5</td>
+                    <td>(11+12)/2 = 11.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13  -  14]</th>
+                    <td>8</td>
+                    <td>17</td>
+                    <td>8/40 = 0.2</td>
+                    <td>17/40 = 0.425</td>
+                    <td>0.2*100 = 20</td>
+                    <td>0.425*100 = 42.5</td>
+                    <td>(13+14)/2 = 13.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15  -  16]</th>
+                    <td>11</td>
+                    <td>28</td>
+                    <td>11/40 = 0.275</td>
+                    <td>28/40 = 0.7</td>
+                    <td>0.275*100 = 27.5</td>
+                    <td>0.7*100 = 70</td>
+                    <td>(15+16)/2 = 15.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17  -  18]</th>
+                    <td>7</td>
+                    <td>35</td>
+                    <td>7/40 = 0.175</td>
+                    <td>35/40 = 0.875</td>
+                    <td>0.175*100 = 17.5</td>
+                    <td>0.87.5*100 = 87.5</td>
+                    <td>(17+18)/2 = 17.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19  -  20]</th>
+                    <td>5</td>
+                    <td>40</td>
+                    <td>5/40 = 0.125</td>
+                    <td>40/40 = 1</td>
+                    <td>0.125*100 = 12.5</td>
+                    <td>1*100 = 100</td>
+                    <td>(19+20)/2 = 19.5</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td>40</td>
+                  <td></td>
+                  <td>1</td>
+                  <td></td>
+                  <td>100</td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+              <p style="text-align:justify;">Para la presentación final de la tabla de distribución de frecuencias, se suele omitir las columnas de hi y Hi o las hi% y Hi%, ya que ambas pares de columnas presentan el mismo tipo de información, solo que las últimas estan en porcentajes. En este caso dejaremos las porcentuales, ya que facilitan la interpretación.</p>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Clases</th>
+                    <th scope="col">fi</th>
+                    <th scope="col">Fi</th>
+                    <th scope="col">hi%</th>
+                    <th scope="col">Hi%</th>
+                    <th scope="col">Xi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">[9 - 10]</th>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>12.5</td>
+                    <td>12.5</td>
+                    <td>9.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[11 - 12]</th>
+                    <td>4</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>22.5</td>
+                    <td>11.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[13 - 14]</th>
+                    <td>8</td>
+                    <td>17</td>
+                    <td>20</td>
+                    <td>42.5</td>
+                    <td>13.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[15 - 16]</th>
+                    <td>11</td>
+                    <td>28</td>
+                    <td>27.5</td>
+                    <td>70</td>
+                    <td>15.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[17 - 18]</th>
+                    <td>7</td>
+                    <td>35</td>
+                    <td>17.5</td>
+                    <td>87.5</td>
+                    <td>17.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">[19 - 20]</th>
+                    <td>5</td>
+                    <td>40</td>
+                    <td>12.5</td>
+                    <td>100</td>
+                    <td>19.5</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <th scope="row">Total</th>
+                  <td>40</td>
+                  <td></td>
+                  <td>100</td>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+
+
+              <h5 id="histograma" class="fs-5">HISTOGRAMA DE FRECUENCIA SIMPLE</h5>
+
+              <p style="text-align:justify;">Como se mencionó en el capítulo 1 en la sección de "Gráficos Cartesianos", un histograma de frecuencia simple se usa para representar las frecuencias absolutas simples o relativas porcentuales simples de una variable cuantitativa continua. Para su construcción, comenzamos en el eje "X" o de las abscisas donde se posicionan las clases de la variable continua que definimos en en nuestra tabla de distribución de frecuencia. Por su parte, en el eje "Y" o de las ordenadas, ubicaremos los valores de las frecuencias abosolutas o relativas, según sea el caso. Para este ejemplo usaremos las frecuencias absolutas simples (fi) y lo realizaremos en Excel, aunque en proximos capítulos lo podremos realizar en R o Python.</p>
+
+              <center>
+                <img src="imagenes/histograma_simple_data.png" width="600" height="400"/>
+              </center>
+
+              <p style="text-align:justify;">La anchura de las barras representa el intervalo de la clase (Ic) y por ende, es constante para todas las barras, es por ello que no existe separación entre ellas, ya que debe haber un "<i>continuum</i>" de la data a lo largo del eje "x". Se puede destacar que la clase que comprende entre 15 y 16 años, posee la mayor frecuencia, seguido de la clase de 13 y 14 años. Por otro lado, la clase que posee la menor frecuencia es la que comprende entre los 11 y 12 años.</p>
+
+
+              <h5 id="acumulado" class="fs-5">HISTOGRAMA DE FRECUENCIA ACUMULADA</h5>
+
+              <p style="text-align:justify;">Es similar al de frecuencia simple, pero en este caso las barras representan la frecuencia acumulada absoluta o porcentual, según sea el caso.  Para este ejemplo usaremos las frecuencias absoluta acumulada (Fi) y lo realizaremos en Excel, aunque en proximos capítulos lo podremos realizar en R o Python.</p>
+
+              <center>
+                <img src="imagenes/histograma_acumulado_data.png" width="600" height="400"/>
+              </center>
+
+              <br>
+              <br>
+              <br>
+
+
+              <h5 id="conclu" class="fs-5">A MODO DE CONCLUSIÓN</h5>
+
+              <p style="text-align:justify;">Las distribuciones de frecuencia es el primer enfoque analítico de un proceso descriptivo de los datos de tipo contínuo. Permite un rápido acceso acceso a la información a la vez que ordena, resume y agrupa los datos. Su representación gráfica asociada como son los histogramas de frecuencia simple y acumulada facilita la compresión visual de la estructura, forma y variabilidad de los datos.</p>
+
+              <p style="text-align:justify;">Este primer paso es clave, para el desarrollo de otros procedimientos y test estadísticos, pues su compresión y manejo ayuda al entendimiento de las medidas de tendencia central (media, mediana y moda), medidas de posición (cuartiles, deciles o percentiles), dispersión y forma, así como el ajuste a algunas distribuciones probabilísticas como la distribución normal, entre otras.</p>
+
+            </div>
+
+        </div>
+    </div>
+    
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
