@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="copyright" content="© 2023 Esteban Arroyo">
+    <meta name="author" content="Esteban Arroyo" />
+    <meta name="robots" content="index"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <title>Medidas de Tendencia Central | Capítulo 3</title>
+    <link rel="icon" href="imagenes/icon2.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- Librería MathJax-->
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script>
+      //desactiva el botón derecho del mouse
+      document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+      }, false);
+    </script>
+</head>
+<style>
+    #menu {
+     position: -webkit-sticky;
+     position: -moz-sticky;
+     position: -ms-sticky;
+     position: -o-sticky;
+     position: fixed;
+     top: 180px;
+     bottom: auto;
+     padding-left: 15px;
+     padding-top: 20px;
+     width: 250px;
+     background: #eee;
+    }
+    .col-12 {
+     padding-left: 320px;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-file-bar-graph" style="font-size:40px"></i>   <!-- Aqui va bootstrap icons-->
+          </a>
+          <div class="col-sm text-start">
+            <p class="text-white-50 fw-bold">  &copy; Derechos Reservados - Esteban Arroyo 2024</p>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <!--<a class="nav-link" href="#">Inicio</a>-->
+              <a class="nav-link" href="#">estebanlab@gmail.com</a>
+              <!-- <a class="nav-link" href="#">Otros</a>-->
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container" >
+        <div class="row py-3">
+            <h1 class="text-center">CAPÍTULO 3</h1>
+            <hr>
+
+            <div id="menu" class="col-2">
+                <p><b>Índice</b></p>
+                <p><a href="#definicion">Medidas de Tendencia Central</a></p>
+                <p><a href="#media">Media</a></p>                  
+                <p><a href="#mediana">Mediana</a></p>
+                <p><a href="#moda">Moda</a></p>
+                <p><a href="#conclu">Conclusión</a></p>
+            </div>
+
+            <div class="col-12">
+                <h2 id="definicion">MEDIDAS DE TENDENCIA CENTRAL</h2>
+
+                <p style="text-align:justify;">Las medidas de tendencia central son estadísticos que permiten caracterizar o representar a un conjunto de datos simples o agrupados, en función de un valor del centro o una mayoría agrupada de la distribución de esos datos.</p>
+
+                <p style="text-align:justify;">Estas medidas resumen la información de un gran volumen de datos en unos pocos indicadores, lo que permite evaluar el comportamiento de una variable, así como, comparar resultados con otras variables de estructura o nivel de medición similar. Son muy utilizadas para describir poblaciones, pero principalmente muestras. Son básicamente el primer escalón para la toma de decisiones, en casi cualquier campo de aplicación o conocimiento. En generla, los objetivos de las medidas de tendencia central lo podemos resumir en dos:</p>
+
+                <ol>
+                  <li>Obtener un valor que resuma casi todas las mediciones.</li>
+                  <li>Ubicarse el centro de la distribución (medidas de tendencia central)</li>
+                </ol>
+
+                <center><img src="imagenes/central.webp" width="400" height="400" /></center>
+
+                <br>
+                <br>
+                <br>
+
+                <p>Las medidas clásicas de tendencia central son:</p>
+                <div class="row justify-content-center align-items-center">
+                  <div class="col ">
+                    <ul>
+                      <li>MEDIA O PROMEDIO</li>
+                      <li>MEDIANA</li>
+                      <li>MODA</li>
+                    </ul>
+                  </div>
+                  <div class="col"><img src="imagenes/central.png" width="200" height="300" /></div>
+                </div>
+                
+
+                <h5 id="media" class="fs-5">MEDIA O PROMEDIO</h5>
+
+                <p style="text-align:justify;">Se define como un valor representativo y predominante dentro de un conjunto de datos. Permite sintetizar o resumir la información de una gran masa de datos por uno solo, lo cual complementado con otros estadísticos, permite al investigador tener un indicador básico sobre el comportamiento del fenómeno estudiado.</p>
+
+                <p>Las medias o promedios, las podemos clasificas en dos grandes grupos:</p>
+
+                <ul>
+                  <li><b>Promedios Matemáticos</b>: Son susceptibles de operaciones algebráicas, es decir, para otros procedimientos estadísticos, los promedios se pueden combinar en operaciones comunes del álgebra elemental (sumar, restar, multipliccar, etc.)</li>
+                  <li><b>Promedios No Matemáticos</b>: No son susceptibles de operaciones algebráicas, es decir, estas medidas no pueden combinarse matemáticamente de la misma manera que los promedios matemáticos, ya que solo dependen del contexto específico de cada variable y solo es representativa de la variable misma. </li>
+                </ul>
+
+                <h5 class="fs-5">Promedios Matemáticos</h5>
+
+                <p style="text-align:justify;">Los promedios matemáticos se aplican en variables numéricas cuantitativas, generalmente medias en escala de intervalo o razón. </p>
+
+                <p>Dentro de los promedios matemáticos más usados o conocidos, tenemos:</p>
+                <ul>
+                  <li><b>Media o Promedio Aritmético</b>: Se define como el cociente que resulta de dividir la suma de los valores de una serie entre el número de ellos. Se usa para variables de tipo continuo como edad, peso, diametro, salario, etc. \[\bar{x} = {\sum_{i=1}^n x_{i} \over n}\]</li>
+                  <li><b>Media o Promedio Geométrico</b>: Es la raíz n-ésima del producto de todos los números. Es recomendada para datos que se disponen en progresión geométrica, para promediar razones, interés compuesto y números índice. \[\bar{x} = \sqrt[n]{x_{1}*x_{2}*x_{3}*....*x_{n}}  \]</li>
+                  <li><b>Media o Promedio Armónico</b>: Es el recíproco, o inverso, de la media aritmética de los recíprocos de dichos valores y es recomendada para promediar velocidades. Se utiliza cuando la variable de interés depende de la velocidad, tiempo, espacio y rendimiento. Se usan tambien cuando se promedian razones. \[\bar{x} = {n \over {1 \over x_{1}}+{1 \over x_{2}}+{1 \over x_{3}}+...+{1 \over x_{n}}  }\]</li>
+                </ul>
+
+                <hr>
+
+
+                <h5 class="fs-5">Media o Promedio Aritmético</h5>
+
+                <p style="text-align:justify;">En términos sencillos, para datos no agrupados o serie de datos simples, la media o promedio aritmético se obtiene de la siguiente forma: \[Media \hspace{0.1cm} aritmética = {suma \hspace{0.1cm} de \hspace{0.1cm} todos \hspace{0.1cm} los \hspace{0.1cm} datos \hspace{0.1cm} de \hspace{0.1cm} la \hspace{0.1cm} serie \over número \hspace{0.1cm} o \hspace{0.1cm} cantidad \hspace{0.1cm} de \hspace{0.1cm} datos}\]</p>
+
+                <p style="text-align:justify;">Entonces, si cada dato lo representamos como Xi , donde i = 1,2,3,4, ...., etc entonces podemos escribirlo así:  \[\bar{x} = {x_{1}+x_{2}+x_{3}+....+x_{n} \over n}\]</p>
+                
+                <p style="text-align:justify;">La suma de x1 + x2 + x3 +...+ xn, se puede representar de forma abreviada con la letra griega sigma en mayúscula <span class="fs-4">&Sigma;</span> , que representa el sumatorio</p>
+
+                <p style="text-align:justify;">Finalmente, la fómula queda así: \[\bar{x} = {\sum_{i=1}^n x_{i} \over n}\]</p>
+
+                <p style="text-align:justify;"><b>Ejemplo</b>: Las notas de 5 estudiantes en estadística es: 5.5, 6, 6.8, 5.2 y 6.5. Entonces la media o promedio arirmético es:  \[\bar{x} = {5.5+6+6.8+5.2+6.5 \over 5} = {30 \over 5} = 6\]</p>
+
+                <p style="text-align:justify;">Por tanto, se puede afirmar que la nota media o promedio de los 5 estudiantes en estadística es 6 puntos.</p>
+                
+
+                <h5 class="fs-5">Propiedades de la media aritmética</h5>
+
+                <ol>
+                  <li>Si todos los valores de una variable (cuantitativa), se les suma (o resta) una constante “K”  entonces, la media aritmética queda aumentada (disminuida) en el valor “K”.</li>
+                  <img src="imagenes/propiedad1.png" width="600" height="100" />
+                  <p> Entonces el nuevo promedio que es \(\bar{x} = 7\), es igual a <span>\(\bar{x} \pm k\)</span> (5+2)</p> 
+
+                  <li>Si todos los valores de una variable (cuantitativa), se les multiplica (divide) una constante “K”  entonces, la media aritmética queda multiplicada (dividida) en el valor “K”.</li>
+                  <img src="imagenes/propiedad2.png" width="600" height="100" />
+                  <p> Entonces el nuevo promedio que es \(\bar{x} = 10\), es igual a <span>\(\bar{x} \ast / \div k\)</span> (5*2)</p>
+
+                  <li>La sumatoria de los desvíos con respecto a la media aritmética  de una serie de valores, es siempre igual a cero.</li>
+                  <img src="imagenes/propiedad3.png" width="400" height="200" />
+
+                  <li>La media aritmética total o conjunta de dos o más series de datos, se puede calcular en función de las medias aritméticas parciales y del número de datos de cada una de ellas.</li>
+                  <p>Veamos la siguiente demostración:</p>
+                  <p>Tenemos los promedios de tres grupos con sus respectivos "n"</p>
+                  <img src="imagenes/tabla_prop3.png" width="300" height="150"/>
+
+                  <p>Por tanto, la media aritmética total o conjunta será: \[\bar{x}_{t} = {\bar{x}_{1}*n_{1} + \bar{x}_{2}*n_{2} + \bar{x}_{3}*n_{3} +...+ \bar{x}_{i}*n_{i} \over N_{t}} \Rightarrow  \bar{x}_{t} = {\sum \bar{x}_{n}*n_{n} \over N_{t} } \] </p>
+                  
+                  <p>Donde:</p>
+                  <p>\(\bar{x}_{i} = \) Media Aritmética de c/grupo</p>
+                  <p>\(n_{i} = \) Número o cantidad de datos de c/grupo</p>
+                  <p>\(n_{t} = \) Número o cantidad total de datos </p>
+                  <p>\(\bar{x}_{t} = \) Media Aritmética total o conjunta</p>
+
+                  <p>Entonces: </p>
+
+                  <img src="imagenes/tabla_prop3b.png" width="600" height="150"/>
+
+                  <p>Esto quiere decir, que el promedio total o conjunto de los tres grupos considerados es 15.024</p>
+                </ol>
+
+
+                <hr>
+
+                <h5 class="fs-5">Media o Promedio Geométrico</h5>
+
+                <p style="text-align:justify;">Como ya se indicó más arriba, la media o promedio geométrico es ideal para datos contínuos dispuestos en progresión geométrica (una progresión geométrica es una sucesión de números en la que el cociente (o razón) entre dos términos consecutivos es siempre igual. Esto significa que cada término se obtiene multiplicando por una misma cantidad al término anterior), por ejemplo, el interés compuesto en finanzas, crece en progresión geométrica, así mismo el crecimiento de usuarios de redes sociales o servicios digitales sigue un patrón geométrico, también la reproducción de bacterias o virus puede seguir una progresión geométrica. Tambien es muy usada para promediar porcentajes o proporciones. Veamos un ejemplo de los valores en porcentajes de obesidad en 4 países. Nos piden determinar la obesidad promedio:</p>
+
+                <center>
+                  <table class="table" style="width: 250px;">
+                    <col style="width: 20px;">
+                    <col style="width: 50px;">
+                    <thead>
+                      <tr>
+                        <th scope="col">Países</th>
+                        <th scope="col">Obesidad (%)</th>
+                      </tr>
+                      <tr>
+                        <td>México</td>
+                        <td>28.9</td>
+                      </tr>
+                      <tr>
+                        <td>Argentina</td>
+                        <td>28.3</td>
+                      </tr>
+                      <tr>
+                        <td>Chile</td>
+                        <td>28</td>
+                      </tr>
+                      <tr>
+                        <td>Uruguay</td>
+                        <td>29.7</td>
+                      </tr>
+                    </thead>
+                  </table>
+                </center>
+
+                <p>Por tanto, el cálculo promedio de los porcentajes de obesidad es: la raiz cuarta (porque tenemos 4 países) del producto de cada uno de los porcentajes de los 4 países: \[\bar{x} = \sqrt[4]{28.9*28.3*28*29.7} = 28.7  \]</p>
+
+                <p>Esto quiere decir, que el porcentaje promedio de obesidad de esos 4 países es del 28.7%</p>
+
+                <hr>
+
+                <h5 class="fs-5">Media o Promedio Armónico</h5>
+
+                <p style="text-align:justify;">Tal como se indicó más arriba, el promedio armónico es especialmente útil en situaciones donde los datos representan razones o tasas y se necesita encontrar un promedio que considere el impacto proporcional de cada valor en el total. Algunos ejemplos son: en logística y transporte, el promedio armónico se utiliza para calcular la velocidad media cuando hay variaciones en las velocidades en diferentes tramos de un viaje, en inversiones, el promedio armónico se utiliza para calcular el rendimiento medio de activos con diferentes tasas de rendimiento cuando se invierte en cada uno durante el mismo período, en biología y ecología, el promedio armónico se puede emplear para encontrar una tasa promedio de crecimiento en poblaciones de organismos, especialmente cuando diferentes grupos o hábitats tienen distintas tasas de crecimiento que necesitan ser combinadas. </p>
+
+                <p style="text-align:justify;">Veamos un ejercicio simple para entender cómo funciona: Supongamos que una persona decide salir a correr 10 km. Los primeros 2 km corre a 15 km/h, los siguientes 2km, a 17 km/h, los siguientes 2km, a 14 km/h, y los otros dos tramos de 2km, a 13 km/h y 12 km/h, respectivamente. ¿Cuál es el promedio de velocidad (km/h) que corre esta persona?.</p>
+
+                <p style="text-align:justify;">Por lo tanto, como la media armónica es el inverso de la  media aritmética de los inversos de cada valor, entonces: \[\bar{x} = {5 \over {1 \over 15} + {1 \over 17} + {1 \over 14} + {1 \over 13} + {1 \over 12}  } = 13.99\]</p>
+
+                <p style="text-align:justify;">Esto quiere decir, que esta persona corre una distancia de 2 km a una velocidad promedio de 13.99 km/h</p>
+
+
+
+
+
+                <hr>
+
+                <h5 class="fs-5">Promedios No Matemáticos</h5>
+
+                <p style="text-align:justify;">Dentro de los promedios no matemáticos, tenemos la <b>Mediana</b> y <b>Moda</b>. Tienen mútiples usos en la industria, comercio, salud y economía entre otros, ya que contribuyen en la toma de desciones al observar tendencias centrales y patrones más representativos en sus datos sin que estos se vean distorsionados por valores atípicos, por ejemplo en el caso de los salarios, estos indicadores son más "precisos" que los promedios artiméticos ya que no se ve influenciada por ingresos extremadamente altos o bajos. En estudios clínicos de salud, estas indicadores son muy valiosos entender datos de recuperación o supervivencia, lo cual ayuda a definir expectativas realistas para los pacientes.</p>
+
+
+                <h5 id="mediana" class="fs-5">MEDIANA</h5>
+
+                <p style="text-align:justify;">Es el valor que divide a una distribución de datos ordenada, en dos partes iguales, es decir, de un lado a otro existe el mismo número de datos. Veamos un ejemplo.</p>
+
+                <center><img src="imagenes/mediana.png" width="300" height="200" /></center>
+
+                <p style="text-align:justify;">Se tienen las siguientes edades de un grupo de personas: 8, 4, 6, 10, 2. El procedimiento a seguir es este:</p>
+
+                <ol>
+                  <li>Se tienen que ordenar los datos: 2, 4, 6, 8, 10</li>
+                  <li>Si el total de datos es un número impar: \[Pos_{md} = {n+1 \over 2} = {5+1 \over 2} = {6 \over 2} = 3 \]</li>
+                  <li>Entonces la mediana será el valor que ocupa la posición 3:  <b>Md = 6</b> ->  2, 4, <span style="color: red">6</span>, 8, 10</li>
+                  <li>Si el total de datos coincide con un número par, por ejemplo: 2, 4, 6, 8</li>
+                  <li>La posición de la mediana se obtiene de la siguiente forma: \[Pos_{md} = {n \over 2} = {4 \over 2} = 2 \]</li>
+                  <li>Entonces la mediana será el valor que ocupa la posición 2 más el valor de la posición inmediatamente superior</li>
+                  <li>Por tanto la mediana es el punto medio entre los valores centrales: 2, <span style="color: red">4</span>, <span style="color: red">6</span>, 8  \[Md = {4+6 \over 2} = 5 \]</li>
+                  <li>La mediana es: <b>Md = 5</b>.</li>
+                </ol>
+
+                <hr>
+
+                <h5 id="moda" class="fs-5">MODA</h5>
+
+                <p style="text-align:justify;">Es el valor de la variable que presenta la mayor frecuencia absoluta, o simplemente, es el valor que más se repite en una serie de datos.</p>
+
+                <center><img src="imagenes/moda.jpg" width="500" height="200" /></center>
+
+                <p style="text-align:justify;">Para serie de datos simples (ordenadas), la moda se obtiene por simple inspección de frecuencias.</p>
+
+                <p>Ejemplo: obtener la moda de la siguiente serie de datos: 2, 2, 3, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 8, 8, 9, 9</p>
+
+                <p>La moda es: <b>Mo = 5</b>, porque 5 es el valor que más se repite o tiene mayor frecuencia. 2, 2, 3, 4, 4, <span style="color: red">5</span>, <span style="color: red">5</span>, <span style="color: red">5</span>, <span style="color: red">5</span>, 6, 6, 6, 7, 8, 8, 9, 9</p>
+
+                <hr>
+
+                <h5 id="conclu" class="fs-5">A MODO DE CONCLUSIÓN</h5>
+
+                <table class="table table-hover">
+                  <thead>
+                    <tr class="table-dark">
+                      <th scope="col">Media Aritmética</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Es el promedio más conocido y usado</td>
+                    </tr>
+                    <tr>
+                      <td>Influye cada valor de la serie</td>
+                    </tr>
+                    <tr>
+                      <td>Los valores extremos de la serie afectan el promedio (atípicos)</td>
+                    </tr>
+                    <tr class="table-dark">
+                      <th scope="col">Mediana</th>
+                    </tr>
+                    <tr>
+                      <td>Concepto sencillo y fácil de calcular</td>
+                    </tr>
+                    <tr>
+                      <td>No está influida por los valores extremos de la serie</td>
+                    </tr>
+                    <tr>
+                      <td>Se usa cuando el promedio se distorsiona por influencia de valores extremos</td>
+                    </tr>
+                    <tr>
+                      <td>No es confiable cuando los datos no tienden a agruparse hacia el centro</td>
+                    </tr>
+                    <tr class="table-dark">
+                      <th scope="col">Moda</th>
+                    </tr>
+                    <tr>
+                      <td>No está afectado por los valores extremos de la serie</td>
+                    </tr>
+                    <tr>
+                      <td>Es posible encontrar más de una moda en series de datos grandes. Es muy frecuente en distribuciones asimétricas la existencia de dos modas (bi-modal)</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+    
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
