@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="copyright" content="© 2023 Esteban Arroyo">
+    <meta name="author" content="Esteban Arroyo" />
+    <meta name="robots" content="index"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <title>Medidas de Dispersión | Capítulo 5</title>
+    <link rel="icon" href="imagenes/icon2.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- Librería MathJax-->
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script>
+      //desactiva el botón derecho del mouse
+      document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+      }, false);
+    </script>
+</head>
+<style>
+    #menu {
+     position: -webkit-sticky;
+     position: -moz-sticky;
+     position: -ms-sticky;
+     position: -o-sticky;
+     position: fixed;
+     top: 180px;
+     bottom: auto;
+     padding-left: 15px;
+     padding-top: 20px;
+     width: 250px;
+     background: #eee;
+    }
+    .col-12 {
+     padding-left: 320px;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-file-bar-graph" style="font-size:40px"></i>   <!-- Aqui va bootstrap icons-->
+          </a>
+          <div class="col-sm text-start">
+            <p class="text-white-50 fw-bold">  &copy; Derechos Reservados - Esteban Arroyo 2024</p>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <!--<a class="nav-link" href="#">Inicio</a>-->
+              <a class="nav-link" href="#">estebanlab@gmail.com</a>
+              <!-- <a class="nav-link" href="#">Otros</a>-->
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container" >
+        <div class="row py-3">
+            <h1 class="text-center">CAPÍTULO 5</h1>
+            <hr>
+
+            <div id="menu" class="col-2">
+                <p><b>Índice</b></p>
+                <p><a href="#definicion">Medidas de Dispersión</a></p>
+                <p><a href="#rango">Rango o Recorrido</a></p> 
+                <p><a href="#dq">Desviación Cuartil</a></p>                  
+                <p><a href="#destip">Desviación Estándar</a></p>
+                <p><a href="#varianza">Varianza</a></p>
+                <p><a href="#cv">Coeficiente de Variación</a></p>   
+                <p><a href="#conclu">Conclusión</a></p>
+            </div>
+
+            <div class="col-12">
+                <h2 id="definicion">MEDIDAS DE DISPERSIÓN</h2>
+
+                <p style="text-align:justify;">Son indicadores que permiten medir el grado de variabilidad o dispersión de los valores de una serie de datos con relación a un valor de referencia de la misma serie de datos. Es decir, permiten describir cuán dispersos o agrupados están los datos en relación con una medida de tendencia central (como la media o la mediana). En general, las medidas de dispersión tienen el valor 0 como base, es decir, cuanto máa cercano a 0 esté una medida de dispersión, más agrupados u homognéneos son los datos. Por el contrario, mientras más lejano de cero, más dispersos o heterogéneos son los datos. Una baja dispersión indica que los datos están muy cerca de la media, lo que podría implicar mayor estabilidad o precisión. Una alta dispersión podría sugerir que los datos son más impredecibles o que hay más variabilidad intrínseca. Esto permite comparar la variabilidad entre diferentes conjuntos de datos, incluso si tienen medias similares.</p>
+
+                <!--<center><img src="imagenes/distribucion_normal_galton.gif" width="500" height="500" /></center>-->
+                <center><img src="imagenes/pelotas.gif" width="500" height="400" /></center>
+
+                <br>
+                <br>
+                <br>
+
+                <h5 id="rango" class="fs-5">RANGO O RECORRIDO</h5>
+
+                <p style="text-align:justify;">Se define como la dierencia entre el valor mayor y menor de un serie de datos: Rango o Recorrido = Valor Mayor - Valor Menor</p>
+               
+                <p style="text-align:justify;">Es la primer y más intuitiva medida de dispersión. Si el rango es igual a 0, indica que todos los valores son exactamente iguales, por el contrario, si el rango se aleja de del 0, es indicativo de dispersión o variabilidad. Ahora bien, la interpertación del nivel de dispersión (alta, moderada o baja), va a depender de las unidades de medidas de los datos y del análisis comparado con datos similares. Por ejemplo, un rango de 1, puede ser mucho o poco dependiendo del contexto de los datos: no es lo mismo un 1 milímetro a 1 año o 1 kilo, pero al mismo tiempo, 1 milímetro puede ser poco a simple vista, pero en el contexto de fabricación de productos con alta precisión, la diferencia de 1 milímetro puede ser fundamental para desechar o no un producto.</p>
+
+                <p>Veamos otro ejemplo referido a notas de dos exámenes de un grupo de estudiantes:</p>
+
+                <p>Examen 1: calificaciones(6, 6, 6, 6, 6, 6, 6, 6, 6, 6) -> Rango = 0 (no hay dispresión)</p>
+
+                <p>Examen 2: calificaciones(6, 7, 4, 3, 6, 5, 5, 7, 4, 6) -> Rango = 4 (dispersión alta)</p>
+
+                <h5 id="dq" class="fs-5">DESVIACIÓN O AMPLITUD CUARTIL (INTER-CUARTIL)</h5>
+
+                <p style="text-align:justify;">Es la diferencia entre el tercer y el primer cuartil de una distribución o serie de datos: Dq = Q3 - Q1.</p>
+
+                <center><img src="imagenes/dq.png" width="500" height="200" /></center>
+
+                <p style="text-align:justify;">La desviación, amplitud o rango intercuartílico es una medida de dispersión que indica el nivel de concentración de los datos en la zona central de la distribución, es decir, mide la amplitud del 50% central de los datos. Es especialmente útil porque no se ve afectado por valores atípicos o extremos de la distribución, lo que la hace una medida más robusta que otras com por ejemplo el rango.</p>
+
+                <p style="text-align:justify;">Para ello, necesitamos obtener el valor del Q1 (cuartil 1) y Q3 (cuartil 3). Para saber cómo se obtiene los cuartiles, revisar el siguiente enlace:  <a href="https://estebanlab2021.github.io/estadistica_total/posicion.html">Medidas de Posición | Capítulo 4</a>  </p>
+
+                <p>Seguidamente, realizamos la resta del Q3 - Q1. Veamos el aiguiente ejemplo: </p>
+
+                <p>De esta serie de datos ordenados: [10,10,11,12,15,15,16,16,17,17,17,18,18,19,19,19,20,21,21,22,22,23,23,24,25,27,28,29,30,30]</p>
+
+                <p>Obtenemos el Q1 = 16.25  y el Q3 = 23</p>
+
+                <p>Luego realizamos la resta: Dq = Q3 - Q1 -> Dq = 23 - 16.25 = 6.75</p>
+
+                <p style="text-align:justify;"><b>¿Por qué usar la desviación, amplitud o rango intercuartílico?</b></p>
+
+                <ol>
+                  <li><b>Detectar valores atípicos (outliers)</b>: Se consideran valores atípicos aquellos que están fuera de un rango o criterio propuesto por John Tukey, que dice que se considera un valor atípico el que se encuentra 1,5 veces la distancia entre los Q3 y Q1 o a 3 veces esa distancia (atípico extremo). Esto se aprecia en los gráficos de boxplot (cajas y bigotes)</li>
+                  <center><img src="imagenes/atipicos.png" width="500" height="200" /></center>
+                  <li><b>Resumir la dispersión de datos en análisis exploratorios</b>: Es útil cuando los datos tienen una distribución sesgada o valores extremos, ya que no es sensible a ellos.</li>
+                  <li><b>Visualización en los gráficos de boxplot (cajas y bigotes)</b>: como ya se apreció, en el boxplot, la desviación, amplitud o rango intercuartílico, es la longitud de la "caja", que representa el 50% central de los datos.</li>
+                </ol>
+
+                <h5 id="destip" class="fs-5">DESVIACIÓN TÍPICA O ESTÁNDAR</h5>
+
+                <p style="text-align:justify;">Permite determinar la variación o dispersión de los datos en función del promedio. Es una medida de dispersión expresada en las mismas unidades que los datos de la variable objeto de estudio. Es una de las medidas de dispersión más importantes en Estadística. En general, indica cuánto, en promedio, se desvían los datos respecto a la media. En otras palabras, mide qué tan dispersos están los datos alrededor de la media.</p>
+
+                <p>Para una población se obtiene de la siguiente forma:</p>
+                \[ \sigma = \sqrt{\sum_{i=1}^n (x_{i}- \bar{x} )^2 \over N} \]
+
+                <p>Para un muestra se realiza un pequeño ajuste:</p>
+                \[ \sigma = \sqrt{\sum_{i=1}^n (x_{i}- \bar{x} )^2 \over n-1} \]
+
+                <p style="text-align:justify;">La interpertación es bastante intuitiva, ya que si la desviación estándar es pequeña, los datos están cerca de la media, lo que indica poca variabilidad. Por el contrario, si la desviación estándar es grande, los datos están dispersos, es decir, hay una mayor variabilidad.</p>
+
+                <p>Cuando “n” es suficientemente grande (generalmente de 30 o más), la distribución tiende a tener esta forma:</p>
+
+
+                <center><img src="imagenes/standard_deviation.png" width="400" height="200" /></center>
+
+                <p>Donde se pueden destacar 3 puntos de inflexión:</p>
+
+                \[\bar{x} \pm 1 \sigma = 68.28 \%\]
+                \[\bar{x} \pm 2 \sigma = 95.45 \%\]
+                \[\bar{x} \pm 3 \sigma = 99.73 \%\]
+
+                <p style="text-align:justify;">La desviación estándar tiene una amplia gama de aplicaciones y utilidades dentro de la estadistica e inferencia en general:</p>
+
+                <ol>
+                  <li><b>Comprender la variabilidad</b>: Ayuda a entender cuán dispersos estan los datos objeto de estudio</li>
+                  <li><b>Pruebas de hipótesis</b>: Es un componente clave en estadística inferencial para calcular intervalos de confianza y realizar pruebas estadísticas.</li>
+                  <li><b>Control de calidad</b>: En procesos industriales, una desviación estándar baja indica que los productos son consistentes.</li>
+                  <li><b>Relación con la varianza</b>: La varianza es el promedio de los cuadrados de las desviaciones y la desviación estándar es su raíz cuadrada. Esto implica que si hay la ausencia de una se puede obtener la otra y así continuar con el proceso estadístico requerido.</li>
+                </ol>
+
+                <h5 id="varianza" class="fs-5">VARIANZA</h5>
+
+                <p style="text-align:justify;">Es una medida “bruta” de la variabilidad. Su unidad de medida corresponde al cuadrado de la unidad de medida de la variable: por ejemplo, si la variable mide peso en kilos, la varianza se expresa en kilos al cuadrado. Comprender la varianza puede ayudar a escalar las características de una muestra o población y saber qué características contribuyen más al rendimiento de un modelo estadístico específico.</p>
+
+                <p>Para una población se obtiene de la siguiente forma:</p>
+
+                \[ \sigma^2 = {\sum_{i=1}^n (x_{i}- \bar{x} )^2 \over N} \]
+
+                <p>...y para una muestra:</p>
+                \[ \sigma^2 = {\sum_{i=1}^n (x_{i}- \bar{x} )^2 \over n-1} \]
+
+                <p class="fs-5">EJEMPLO</p>
+
+                <p>Supongamos que tenemos la edad de una muestra de niños. Determinar el promedio, la desviación estandar y varianza</p>
+
+                <p>edad = [2,2,3,3,3,4,5,6,6,6,7,7,8]</p>
+
+                <div class="row">
+                  <div class="col">
+                    <center><img src="imagenes/cuadro.png" width="150" height="350" /></center>
+                  </div>
+                  <div class="col">
+                    <ol>
+                      <li>Para el promedio lo obtenemos como la sumatoria de los datos dividido entre el total de datos. \[\bar{x} = {62 \over 13} = 4.769\]</li>
+                      <li>La desviación típica la obtenemos como la raiz cuadrada de las diferencias de cada dato con su promedio al suadrado entre n-1. \[ \sigma = \sqrt{50.308 \over 13-1}= 2.0475 \]</li>
+                      <li>La varianza la obtenemos como diferencias de cada dato con su promedio al suadrado entre n-1. \[ \sigma^2 = {50.308 \over 13-1}= 4.192^2 \]</li>
+                    </ol>
+                    
+                  </div>
+
+                  <p>Interpretación:</p>
+                  <p style="text-align:justify;">El valor promedio de la edad de la muestra de niños es 4.8 años, aproximadamente. Su desviación típica son 2.05 años. Si queremos establecer un rango o intervalo al 68.28% de los datos, hacemos lo siguiente: \(\bar{x} \pm 1 \sigma : 4.8 \pm 2.05 =\)  [2.75 - 6.85]. Esto quiere decir, que que entre 2.75 y 6.85 años se encuentra el 68.28% de los datos de la muestra. Por su parte, la varianza se interpreta como 4.192 \(años^2 \) </p>
+                </div>
+
+                <h5 id="cv" class="fs-5">COEFICIENTE DE VARIACIÓN</h5>
+
+                <p style="text-align:justify;">Expresa la desviación estándar como porcentaje de la media aritmética, mostrando una interpretación relativa del grado de variabilidad, independiente de la escala de la variable. Es una medida que nos ayuda a entender la variabilidad relativa de un conjunto de datos en relación con su media. Es especialmente útil para comparar la dispersión entre diferentes conjuntos de datos con escalas o unidades distintas. Se obtiene de la siguiente forma:</p>
+
+                \[C.V. = {S_{x} \over \bar{x}}*100 \% \]
+
+                <p>Siguiendo con los datos previamente calculados:</p>
+
+                \[C.V. = {2.0475 \over 4.769}*100 \% =  42.93\% \]
+
+                <p style="text-align:justify;">Para la interpretación no existe un consenso claro que explique cuándo es mucho o poco, sin embargo, podemos convenir que, al igual que para todas las medidas de dispersión, valores cercanos al 0% indican una baja variabilidad relativa, es decir, los datos están cercanos a la media y por tanto son muy parecidos, por otro lado, si los valores del coeficiente de variación son cercanos al 100%, indican alta variabilidad relativa, es decir, los datos están muy dispersos respecto a la media, lo que indica que todos los valores son muy diferentes o diversos entre si.</p>
+
+                <p>En este caso particular, podemos decir que nuestros datos tienen una variabilidad del 42.93%, una variabilidad moderada.</p>
+
+                <p style="text-align:justify;">Por otra parte, como el coeficiente de variación es un porcentaje, no depende de las unidades de los datos, lo que facilita las comparaciones. Por ejemplo:</p>
+
+                <p>Supongamos que tenemos las notas finales de dos cursos:</p>
+
+                <p>Datos curso A</p>
+
+                \[Media \thinspace (\bar{x}) = 5.1 \thinspace pts\]
+
+                \[Desviación \thinspace Estandar (S_{x}) = 1.2 \thinspace pts\]
+
+                <p>Datos curso B</p>
+
+                \[Media \thinspace (\bar{x}) = 4.1 \thinspace pts\]
+
+                \[Desviación \thinspace Estandar (S_{x}) = 0.95 \thinspace pts\]
+
+
+                <p>Cálculo del coeficiente de variación</p>
+
+                <ul>
+                  <li>Curso A: \[C.V._{a} = {1.2 \over 5.1}*100 \% =  23.5\% \]</li>
+                  <li>Curso B: \[C.V._{b} = {0.95 \over 4.1}*100 \% =  23.2\% \]</li>
+                </ul>
+
+                <p>Aunque la desviación estándar del curso A es mayor, el CV muestra que ambos cursos tienen una variabilidad relativa similar.</p>
+
+
+                <br>
+                <br>
+                <br>
+
+                <h5 id="conclu" class="fs-5">A MODO DE CONCLUSIÓN</h5>
+
+                <p style="text-align:justify;">Las medidas de dispersión complementan las medidas de tendencia central y son esenciales para interpretar correctamente los datos, detectar patrones, y tomar decisiones fundamentadas en el análisis estadístico. Medidas como la la varianza y la desviación estándar se utilizan para calcular intervalos de confianza y realizar pruebas de hipótesis en estadística inferencial. También son un elemento clave en la estimación del error estándar y en modelos de regresión. Así mismo, ayudan a detectar valores extremos que podrían influir de manera significativa en los análisis, como ocurre con la amplitud total o el rango intercuartílico.</p>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+    
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>

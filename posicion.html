@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="copyright" content="© 2023 Esteban Arroyo">
+    <meta name="author" content="Esteban Arroyo" />
+    <meta name="robots" content="index"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <title>Medidas de Posición | Capítulo 4</title>
+    <link rel="icon" href="imagenes/icon2.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- Librería MathJax-->
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script>
+      //desactiva el botón derecho del mouse
+      document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+      }, false);
+    </script>
+</head>
+<style>
+    #menu {
+     position: -webkit-sticky;
+     position: -moz-sticky;
+     position: -ms-sticky;
+     position: -o-sticky;
+     position: fixed;
+     top: 180px;
+     bottom: auto;
+     padding-left: 15px;
+     padding-top: 20px;
+     width: 250px;
+     background: #eee;
+    }
+    .col-12 {
+     padding-left: 320px;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-file-bar-graph" style="font-size:40px"></i>   <!-- Aqui va bootstrap icons-->
+          </a>
+          <div class="col-sm text-start">
+            <p class="text-white-50 fw-bold">  &copy; Derechos Reservados - Esteban Arroyo 2024</p>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <!--<a class="nav-link" href="#">Inicio</a>-->
+              <a class="nav-link" href="#">estebanlab@gmail.com</a>
+              <!-- <a class="nav-link" href="#">Otros</a>-->
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container" >
+        <div class="row py-3">
+            <h1 class="text-center">CAPÍTULO 4</h1>
+            <hr>
+
+            <div id="menu" class="col-2">
+                <p><b>Índice</b></p>
+                <p><a href="#definicion">Medidas de Posición</a></p>
+                <p><a href="#cuartil">Cuartiles</a></p>                  
+                <p><a href="#decil">Deciles</a></p>
+                <p><a href="#percentil">Percentiles</a></p>
+                <p><a href="#conclu">Conclusión</a></p>
+            </div>
+
+            <div class="col-12">
+                <h2 id="definicion">MEDIDAS DE POSICIÓN</h2>
+
+                <p style="text-align:justify;">Son indicadores usados para determinar el porcentaje acumulado de datos hasta cierto punto o corte en la distribución. Las medidas de posición son útiles para comparar valores dentro del mismo conjunto o serie de datos o también entre distintos conjuntos de datos. En general, consisten en observar la cantidad de datos que estan contenidos en cierto intervalo de los mismos datos, por ejemplo en la imagen vemos una candidad de canicas específicas dentro del 0% al 20% de la distribución total de los datos. Tambien observamos que al 40% la cantidad es el doble, lo que quiere decir, que entre el 0% y 40% hay más canicas acumuladas que en el 20%, y así sucesivamente.</p>
+
+                <center><img src="imagenes/canicas.png" width="600" height="400" /></center>
+
+                <p style="text-align:justify;">Las medidas de posición más utilizadas en estadística son:</p>
+
+                <ol>
+                  <li> <a href="#cuartil"><b>Cuartiles</b></a>: Dividen una distribución en cuatro partes iguales</li>
+                  <li><a href="#decil"><b>Deciles</b></a>: Dividen una distribución en diez partes iguales</li>
+                  <li><a href="#percentil"><b>Percentiles</b></a>: Dividen una distribución en cien partes iguales</li>
+                </ol>
+
+                <br>
+                <br>
+                <br>
+
+                <h5 id="cuartil" class="fs-5">CUARTILES</h5>
+
+                <p style="text-align:justify;">Los cuartiles dividen los valores ordenados de una variable contínua en cuatro partes iguales. Por ejemplo, supongamos que tenemos una serie de datos ordenados de menor a mayor y lo representamos de la siguiente manera:</p>
+
+                <center><img src="imagenes/cuartil1.png" width="600" height="150" /></center>
+
+                <p>..y ahora queremos dividirlo en 4 partes exactamente iguales. Quedaría de la siguiente forma:</p>
+
+                <center><img src="imagenes/cuartil2.png" width="600" height="150" /></center>
+
+                <p>Cada uno de esos “cortes” se llaman cuartiles, donde el Q1 representa al cuartil 1, el Q2 representa el cuartil2 y el Q3 representa el cuartil 3.</p>
+
+                <center><img src="imagenes/cuartil3.png" width="600" height="150" /></center>
+
+                <p>Por tanto, cada segmento representa un 25% de la distribución y cada cuartil posee un porcentaje acumulado respectivo.</p>
+
+                <center><img src="imagenes/cuartil4.png" width="600" height="250" /></center>
+
+                <p style="text-align:justify;">En este ejemplo, el <b>cuartil 1</b>, coincide con el valor de 16.25, es decir, entre el valor mínimo de la serie y 16.25 existe o se acumula un 25% de los datos. El <b>cuartil 2</b>, representa el valor acumulado al 50%, que en este caso el 19, es decir, entre el valor mínimo y 19 se encuentra el 50% de los datos acumulados. También este valor coincide con la <b>Mediana</b>, lo que quiere decir que la mediana tambien es una medida de posición. <b>El cuartil 3</b>, el valor acumulado al 75% de la distribución que es igual a 23, es decir, entre el valor mínimo y 23 hay un acumulado del 75% de los datos.</p>
+
+                <p>Esta estructura de representación es coincidente con los boxplot o gráficos de cajas y bigotes</p>
+
+                <center><img src="imagenes/cuartil5.png" width="600" height="180" /></center>
+
+                <h5 id="decil" class="fs-5">DECILES</h5>
+
+                <p style="text-align:justify;">Dividen una distribución ordenada en diez partes iguales.</p>
+
+                <center><img src="imagenes/deciles1.png" width="600" height="200" /></center>
+
+                <p style="text-align:justify;">Por lo tanto, cada "corte", representa el D1 o decil 1, D2 o decil 2, y así sucesivamente hasta el D9 o decil 9.  Y cada uno expresa el un 10% de la distribución y cada decil posee un porcentaje acumulado respectivo. La interpretación de los deciles es exactamente la misma que la de los cuartiles, es decir, el <b>decil 1</b>, representa el 10% acumulado al valor 11.9, el <b>decil 2</b>, reprsenta el 20% acumulado al valor 15.8 y aspi sucesivamente.</p>
+
+                <p>Si observamos, el D5 coincide con el Q2</p>
+
+                <center><img src="imagenes/deciles2.png" width="600" height="300" /></center>
+
+                <p>También notamos que entre el D2 y D3 debe estar el valor de Q1 y entre D7 y D8 debe coindicir con Q3.</p>
+
+                <h5 id="percentil" class="fs-5">PERCENTILES</h5>
+
+                <p style="text-align:justify;">Dividen una distribución ordenada en cien partes iguales. Cada "corte", representa un "percentil" y cada uno expresa un 1% de la distribución, donde cada percentil posee un porcentaje acumulado respectivo. La interpretación de los percentiles es exactamente la misma que la de los deciles o cuartiles. Por ejemplo, el P5 o percentil 5, representa el valor acumulado al 5% de la distribución. Es evidente que los percentiles contienen las mismas "posiciones" o valores de los deciles o cuartiles, por ejemplo, el P10 o percentil 10, coincide con el D1, el P25 coincide con Q1, y así sucesivamente.</p>
+
+                <center><img src="imagenes/percentil1.png" width="600" height="150" /></center>
+
+                <p>Al igual que en el los casos anteriores, observamos que el P50 coincide con el D5 y Q2 en el valor del 50%.</p>
+
+                <center><img src="imagenes/percentil2.png" width="600" height="350" /></center>
+
+                <p style="text-align:justify;">Por lo tanto, los <b>percentiles</b>, son capaces de obtener medidas de posición específicas que no están contempladas ni el cuartiles o deciles y son muy usadas para evaluar las distribuciones de los datos.</p>
+
+                <p style="text-align:justify;">Finalmente, para obtener cualquiera de las medidas de posición se procede de las misma forma que para obtener la mediana: 1) se ordenan los datos, 2) se obtiene la Posición respectiva ,y 3) el valor será el que corresponda con la posición. Para obtener la ubicación de cualquer medida de posición usamos:</p>
+
+                <center><img src="imagenes/pos.png" width="700" height="400" /></center>
+
+                <br>
+                <br>
+                <br>
+
+                <h5 id="conclu" class="fs-5">A MODO DE CONCLUSIÓN</h5>
+
+                <p style="text-align:justify;">Las medidas de posición son importantes porque porporcionan información sobre la posición de un valor en relación con otros valores en un conjunto de datos. Esto permite conocer el valor en torno al cual se agrupan cierto porcentaje acumulado de ellos. Tiene algunos ejemplos práctico como el control de calidad en la industria como el control de defectos en la producción, al calcular los percentiles, puede identificar el nivel máximo de defectos en el 90% de los productos. Esto ayuda a fijar estándares de calidad.</p>
+
+                <p style="text-align:justify;">A nivel de la economía son muy útiles para evaluar la distribución del ingreso o salario, generalmente se aplican los deciles para dividir la población en 10 grupos según ingresos. Esto permite analizar la desigualdad económica.</p>
+
+                <p style="text-align:justify;">En evaluación de crecimiento infantil, los percentiles del peso o altura se usan para comparar a un niño con su grupo de referencia y evaluar su "status" nutricional.</p>
+
+                <p style="text-align:justify;">En salud pública, se usa para analizar la distribución de enfermedades, en general se pueden dividir las tasas de incidencia de una enfermedad en diferentes regiones usando cuartiles, la idea es poder priorizar recursos y diseñar campañas de prevención en áreas críticas en regiones con las tazas más altas que generalmente corresponden entre 3er y 4to cuartil.</p>
+
+                <p style="text-align:justify;">En resumen, estas medidas son fundamentales porque proporcionan una forma sencilla de evaluar la distribución de los datos, así como poder tomar decisiones basadas en comparaciones y segmentaciones.</p>
+
+            </div>
+
+
+
+        </div>
+    </div>
+    
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
